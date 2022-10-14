@@ -9,5 +9,22 @@ import Foundation
 import UIKit
 
 class SpellInfosController: UIViewController {
-    var spellfinded: [Spell] = []
+    var spell: [Spell] = []
+    var screen: SpellInfos?
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+
+    override func loadView() {
+        self.screen = SpellInfos()
+        self.view = self.screen
+    }
+
 }

@@ -20,7 +20,7 @@ class SpellSearch: UIView {
     lazy var labelView: UILabel = {
         var label = UILabel()
         label.text = "Search for a spell"
-        label.font = UIFont(name: "IMFellDoublePicaSC-Regular.ttf", size: 24)
+        label.font = UIFont(name: "IM_FELL_Double_Pica_SC", size: 24)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -34,6 +34,7 @@ class SpellSearch: UIView {
         field.borderStyle = .none
         field.keyboardType = .default
         field.attributedPlaceholder = NSAttributedString(string: "Alohomora...", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.4)])
+        field.font = UIFont(name: "IM_FELL_Double_Pica_SC", size: 24)
         field.textAlignment = .center
         field.backgroundColor = UIColor.white.withAlphaComponent(0.4)
         field.textColor = .white
@@ -41,32 +42,50 @@ class SpellSearch: UIView {
         field.layer.cornerRadius = 5
         return field
     }()
-    
+
+    lazy var returnView: UILabel = {
+        var returnView = UILabel()
+        returnView.text = " "
+        returnView.font = UIFont(name: "IM_FELL_Double_Pica_SC", size: 20)
+        returnView.textColor = UIColor(red: 177/255, green: 64/255, blue: 84/255, alpha: 1)
+        returnView.translatesAutoresizingMaskIntoConstraints = false
+        return returnView
+    }()
+
     lazy var searchButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(frame: CGRect(x: 100, y: 100, width: 30, height: 50))
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Search", for: .normal)
-        button.titleLabel?.font = UIFont(name: "IMFellDoublePicaSC-Regular.ttf", size: 24)
+        button.titleLabel?.font = UIFont(name: "IM_FELL_Double_Pica_SC", size: 24)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.clipsToBounds = false
         button.layer.cornerRadius = 8
-//        button.frame = CGRect(x: 100, y: 100, width: 50, height: 50)
+//        button.frame = CGRect(x: 100, y: 100, width: 30, height: 5)
         button.titleLabel?.textAlignment = .center
-        button.backgroundColor = UIColor(red: 117/255, green: 64/255, blue: 94/255, alpha: 1)
+        button.backgroundColor = UIColor(red: 177/255, green: 64/255, blue: 84/255, alpha: 1)
         
         return button
     }()
     
-//    lazy var favoritesButton: UIButton = {
-//        let button = UIButton()
-//        button
-//    }
+    lazy var favoritesButton: UIButton = {
+        let button = UIButton()
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .large)
+        let largeBoldHeart = UIImage(systemName: "suit.heart.fill", withConfiguration: largeConfig)
+        
+        button.layer.cornerRadius = 30
+        button.backgroundColor = .white
+        button.setImage(largeBoldHeart?.withTintColor(UIColor(red: 177/255, green: 64/255, blue: 84/255, alpha: 1), renderingMode: .alwaysOriginal), for: .normal)
+        button.frame = CGRect(x: 300, y: 90, width: 60, height: 60)
+        
+        return button
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(subImageView)
+        addSubview(favoritesButton)
         addSubview(labelView)
         addSubview(searchField)
+        addSubview(returnView)
         addSubview(searchButton)
         configConstraints()
     }
@@ -89,14 +108,14 @@ class SpellSearch: UIView {
             searchField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             searchField.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 20),
             searchField.heightAnchor.constraint(equalToConstant: 50),
-            
+
+            returnView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 230),
+            returnView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+        
             searchButton.topAnchor.constraint(equalTo: searchField.bottomAnchor, constant: 100),
             searchButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             searchButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             searchButton.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 20),
-            searchButton.heightAnchor.constraint(equalToConstant: 50),
-    
-            
         ])
     }
 }

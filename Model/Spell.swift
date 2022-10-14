@@ -8,12 +8,13 @@
 import Foundation
 
 // MODEL - SPELL INFORMATIONS
-struct Spell: Codable {
+struct Spell: Decodable {
     var id: UUID
     var name: String
-    var incantation: String
-    var canBeVerbal: Bool
+    var incantation: String?
+    var canBeVerbal: Bool?
     var type: String
-    var light: String
+    var effect: String?
+    var light: String?
     var creator: String?
 }

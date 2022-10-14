@@ -7,55 +7,55 @@
 
 import Foundation
 
-class API {
-    
-    static func getAllSpells() async -> [Spell] {
-        let link: String = "https://wizard-world-api.herokuapp.com/Spells"
-        let request = URLRequest(url: URL(string: link)!)
-        let decoder = JSONDecoder()
-        let formatter = ISO8601DateFormatter()
-        
-        decoder.dateDecodingStrategy = .custom({ decoder in
-            let container = try decoder.singleValueContainer()
-            let dateString = try container.decode(String.self)
-            
-            if let date = formatter.date(from: dateString){
-                return date
-            }
-            
-            throw DecodingError.dataCorruptedError(in: container, debugDescription: "")
-        })
-        
-        do {
-            let (data, response) = try await URLSession.shared.data(for: request)
-            let spellList = try decoder.decode([Spell].self, from: data)
-            return spellList
-        } catch {
-            print(error)
-            
-        }
-        return []
+let url = "https://wizard-world-api.herokuapp.com/Spells"
 
+public class API {
+    //GETSPELLS FUNC - GET SPELLS FROM API
+    static func getSpells(from url: String){
+        URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { data, response, error in
+
+            guard let data = data, error == nil else {
+                print ("something went wrong")
+                return
+            }
+            var result: [Spell]?
+            do {
+                result = try JSONDecoder().decode([Spell].self, from: data)
+            } catch {
+                print (String(describing: error))
+            }
+
+            guard result != nil else {
+                return
+            }
+            print(result ?? "null")
+        }).resume()
     }
-    
-    static func search(spellname: String) async -> [Spell]? {
-        let searchUser: String = "\(spellname)"
-//        let searchdata = search.data(using: String.Encoding.utf8)!
-//        let base64 = searchdata.base64EncodedString()
-//        print(base64)
-        
-        var request = URLRequest (url: URL(string: "https://wizard-world-api.herokuapp.com/Spells")!)
-        request.httpMethod = "POST"
-//        request.setValue("Basic \(base64)", forHTTPHeaderField: "Authorization")
-        
-        do {
-            let (data, response) = try await URLSession.shared.data(for: request)
-        }
-        catch {
-            print(error)
-            
-        }
-        return nil
+
+    static func searchSpell(url: String, spellName: String, completion: @escaping ([Spell]?) -> Void){
+        let search: String = "\(spellName)"
+        let searchdata = search.data(using: String.Encoding.utf8)!
+        let base64 = searchdata.base64EncodedString()
+        print(base64)
+
+        URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { data, response, error in
+
+            guard let data = data, error == nil else {
+                print ("something went wrong")
+                return
+            }
+            var findSpell: [Spell]?
+            do {
+                findSpell = try JSONDecoder().decode([Spell].self, from: data)
+                completion(findSpell)
+            } catch {
+                print (String(describing: error))
+            }
+
+            guard findSpell != nil else {
+                return
+            }
+            print(findSpell ?? "null")
+        }).resume()
     }
-    
 }

@@ -21,6 +21,9 @@
 		D9B180F528F5AF080080A006 /* Spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B180F428F5AF080080A006 /* Spell.swift */; };
 		D9B180F728F844650080A006 /* SpellInfosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B180F628F844650080A006 /* SpellInfosController.swift */; };
 		D9B180FA28F8592E0080A006 /* IMFellDoublePicaSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9B180F928F8592E0080A006 /* IMFellDoublePicaSC-Regular.ttf */; };
+		D9B180FC28F89C1A0080A006 /* SpellInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B180FB28F89C1A0080A006 /* SpellInfos.swift */; };
+		D9B180FE28F8A1400080A006 /* FavoritesSpells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B180FD28F8A1400080A006 /* FavoritesSpells.swift */; };
+		D9B1810028F8A1620080A006 /* FavoritesSpellsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B180FF28F8A1620080A006 /* FavoritesSpellsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		D9B180F428F5AF080080A006 /* Spell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spell.swift; sourceTree = "<group>"; };
 		D9B180F628F844650080A006 /* SpellInfosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellInfosController.swift; sourceTree = "<group>"; };
 		D9B180F928F8592E0080A006 /* IMFellDoublePicaSC-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IMFellDoublePicaSC-Regular.ttf"; sourceTree = "<group>"; };
+		D9B180FB28F89C1A0080A006 /* SpellInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellInfos.swift; sourceTree = "<group>"; };
+		D9B180FD28F8A1400080A006 /* FavoritesSpells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesSpells.swift; sourceTree = "<group>"; };
+		D9B180FF28F8A1620080A006 /* FavoritesSpellsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesSpellsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,12 +95,11 @@
 		D9B180A828F5A1EB0080A006 = {
 			isa = PBXGroup;
 			children = (
-				D9B180F928F8592E0080A006 /* IMFellDoublePicaSC-Regular.ttf */,
 				D9B180E728F5A2730080A006 /* Model */,
 				D9B180E828F5A2800080A006 /* View */,
 				D9B180E928F5A2860080A006 /* Controller */,
-				D9B180EA28F5A29C0080A006 /* Services */,
 				D9B180B328F5A1EB0080A006 /* Spellia */,
+				D9B180EA28F5A29C0080A006 /* Services */,
 				D9B180CD28F5A1EC0080A006 /* SpelliaTests */,
 				D9B180D728F5A1EC0080A006 /* SpelliaUITests */,
 				D9B180B228F5A1EB0080A006 /* Products */,
@@ -153,6 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				D9B180EB28F5A4810080A006 /* SpellSearch.swift */,
+				D9B180FB28F89C1A0080A006 /* SpellInfos.swift */,
+				D9B180FD28F8A1400080A006 /* FavoritesSpells.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -162,6 +169,7 @@
 			children = (
 				D9B180B828F5A1EB0080A006 /* SpellSearchController.swift */,
 				D9B180F628F844650080A006 /* SpellInfosController.swift */,
+				D9B180FF28F8A1620080A006 /* FavoritesSpellsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -169,6 +177,7 @@
 		D9B180EA28F5A29C0080A006 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D9B180F928F8592E0080A006 /* IMFellDoublePicaSC-Regular.ttf */,
 				D9B180F228F5ADDB0080A006 /* API.swift */,
 			);
 			path = Services;
@@ -333,6 +342,9 @@
 				D9B180BF28F5A1EB0080A006 /* Spellia.xcdatamodeld in Sources */,
 				D9B180F328F5ADDB0080A006 /* API.swift in Sources */,
 				D9B180B728F5A1EB0080A006 /* SceneDelegate.swift in Sources */,
+				D9B180FC28F89C1A0080A006 /* SpellInfos.swift in Sources */,
+				D9B180FE28F8A1400080A006 /* FavoritesSpells.swift in Sources */,
+				D9B1810028F8A1620080A006 /* FavoritesSpellsController.swift in Sources */,
 				D9B180F528F5AF080080A006 /* Spell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

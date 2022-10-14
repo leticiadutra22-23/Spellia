@@ -23,32 +23,27 @@ class SpellSearchController: UIViewController {
         self.setupHideKeyboardOnTap()
         view.backgroundColor = .white
         loadView()
-        
-//        self.screen.searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
+        API.getSpells(from: url)
+
+        self.screen?.searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
     }
     
-//    @objc func searchAction() {
-//        do{
-//            if screen.searchField.text != "" {
-//                Task{
-//                    let res = try await API.search(spellname: (screen.searchField.text)!)!
-//                    if let res = res {
-//                        let SpellInfosController = SpellInfosController()
-//                        SpellInfosController.spellfinded = res
-//                        show(SpellInfosController, sender: self)
-//                    }else{
-//                        self.screen.labelView.text = "Tente novamente"
-//                    }
-//
-//                }
-//            }
-//
-//
-//        } catch {
-//            print(error)
-//        }
-//
-//    }
+    @objc func searchAction(){
+        if screen?.searchField.text != " " {
+            API.searchSpell(url: url, spellName: screen?.searchField.text ?? "Null") { spells in
+                DispatchQueue.main.async {
+                    if spells != nil {
+                        let SpellInfosController = SpellInfosController()
+                        self.show(SpellInfosController, sender: self)
+                    } else {
+                        self.screen?.labelView.text = "Spell not found."
+                    }
+                }
+
+            }
+
+        }
+    }
     
     func setupHideKeyboardOnTap() {
             self.view.addGestureRecognizer(self.endEditingRecognizer())
