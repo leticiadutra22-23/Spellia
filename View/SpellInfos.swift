@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 
 class SpellInfos: UIView {
-    
+    var spellinfo: Spell?
+
     lazy var subImageView: UIImageView = {
         var imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -19,7 +20,7 @@ class SpellInfos: UIView {
     
     lazy var spellView: UILabel = {
         var spellView = UILabel()
-        spellView.text = "Feitiço"
+        spellView.text = "\(spellinfo?.name ?? "")"
         spellView.font = UIFont(name: "IM_FELL_Double_Pica_SC", size: 48)
         spellView.textColor = .white
         spellView.translatesAutoresizingMaskIntoConstraints = false
@@ -48,6 +49,9 @@ class SpellInfos: UIView {
         var typeView = UILabel()
         typeView.text = "Tipo do Feitiço"
         typeView.font = UIFont(name: "IM_FELL_Double_Pica_SC", size: 24)
+        typeView.layer.cornerRadius = 15
+        typeView.layer.frame = CGRect(x: 100, y: 100, width: 300, height: 300)
+        typeView.backgroundColor = UIColor(red: 177/255, green: 64/255, blue: 84/255, alpha: 1)
         typeView.textColor = .white
         typeView.translatesAutoresizingMaskIntoConstraints = false
         return typeView
@@ -70,13 +74,82 @@ class SpellInfos: UIView {
         verbalView.translatesAutoresizingMaskIntoConstraints = false
         return verbalView
     }()
+
+    lazy var favoritesButton: UIButton = {
+        let button = UIButton()
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .large)
+        let largeBoldHeart = UIImage(systemName: "suit.heart", withConfiguration: largeConfig)
+
+        button.layer.cornerRadius = 25
+        button.backgroundColor = .white
+        button.setImage(largeBoldHeart?.withTintColor(UIColor(red: 177/255, green: 64/255, blue: 84/255, alpha: 1), renderingMode: .alwaysOriginal), for: .normal)
+        button.frame = CGRect(x: 165, y: 500, width: 50, height: 50)
+
+        return button
+    }()
     
-//    lazy var verbalView: UILabel = {
-//        var verbalView = UILabel()
-//        verbalView.text = "Can be verbal"
-//        verbalView.font = UIFont(name: "IM_FELL_Double_Pica_SC", size: 24)
-//        verbalView.textColor = .white
-//        verbalView.translatesAutoresizingMaskIntoConstraints = false
-//        return verbalView
-//    }()
+    lazy var searchButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 100, y: 100, width: 30, height: 50))
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Search", for: .normal)
+        button.titleLabel?.font = UIFont(name: "IM_FELL_Double_Pica_SC", size: 24)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.layer.cornerRadius = 8
+//        button.frame = CGRect(x: 800, y: 800, width: 30, height: 50)
+        button.titleLabel?.textAlignment = .center
+        button.backgroundColor = UIColor(red: 177/255, green: 64/255, blue: 84/255, alpha: 1)
+
+        return button
+    }()
+
+
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubview(subImageView)
+        addSubview(spellView)
+        addSubview(incantationView)
+        addSubview(lightView)
+        addSubview(typeView)
+        addSubview(effectView)
+        addSubview(verbalView)
+        addSubview(favoritesButton)
+        addSubview(searchButton)
+        configConstraints()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func configConstraints() {
+            NSLayoutConstraint.activate([
+            subImageView.topAnchor.constraint(equalTo: self.topAnchor),
+            subImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            subImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            subImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+
+            spellView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10),
+            spellView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+
+            incantationView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 70),
+            incantationView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+
+            lightView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 220),
+            lightView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+
+            typeView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 250),
+            typeView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+
+            effectView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 295),
+            effectView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+
+            verbalView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 320),
+            verbalView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+
+            searchButton.topAnchor.constraint(equalTo: incantationView.bottomAnchor, constant: 500),
+            searchButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            searchButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            searchButton.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 20),
+        ])
+    }
 }

@@ -16,5 +16,4 @@ struct Spell: Decodable {
     var type: String
     var effect: String?
     var light: String?
-    var creator: String?
 }

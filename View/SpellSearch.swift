@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+//CLASSE - SpellSearch: View configs and components
 class SpellSearch: UIView {
     
     lazy var subImageView: UIImageView = {
@@ -45,7 +46,6 @@ class SpellSearch: UIView {
 
     lazy var returnView: UILabel = {
         var returnView = UILabel()
-        returnView.text = " "
         returnView.font = UIFont(name: "IM_FELL_Double_Pica_SC", size: 20)
         returnView.textColor = UIColor(red: 177/255, green: 64/255, blue: 84/255, alpha: 1)
         returnView.translatesAutoresizingMaskIntoConstraints = false
@@ -59,7 +59,7 @@ class SpellSearch: UIView {
         button.titleLabel?.font = UIFont(name: "IM_FELL_Double_Pica_SC", size: 24)
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.cornerRadius = 8
-//        button.frame = CGRect(x: 100, y: 100, width: 30, height: 5)
+//        button.frame = CGRect(x: 800, y: 800, width: 30, height: 50)
         button.titleLabel?.textAlignment = .center
         button.backgroundColor = UIColor(red: 177/255, green: 64/255, blue: 84/255, alpha: 1)
         
@@ -92,7 +92,7 @@ class SpellSearch: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func configConstraints() {
             NSLayoutConstraint.activate([
             subImageView.topAnchor.constraint(equalTo: self.topAnchor),

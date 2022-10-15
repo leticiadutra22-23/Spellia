@@ -9,9 +9,12 @@
 // Separando View de ViewController https://swiftrocks.com/writing-cleaner-view-code-by-overriding-loadview
 import UIKit
 
+//CLASS SpellSearchController: create a navigation to SpellInfos
 class SpellSearchController: UIViewController {
     var spells = [Spell]()
     var screen: SpellSearch?
+//    var APISpells: () = API.getSpells(from: url)
+ 
     
     override func loadView() {
         self.screen = SpellSearch()
@@ -24,15 +27,17 @@ class SpellSearchController: UIViewController {
         view.backgroundColor = .white
         loadView()
         API.getSpells(from: url)
+        self.navigationItem.setHidesBackButton(true, animated: true)
 
         self.screen?.searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
     }
     
     @objc func searchAction(){
         if screen?.searchField.text != " " {
-            API.searchSpell(url: url, spellName: screen?.searchField.text ?? "Null") { spells in
+            API.searchSpell(url: url, with: screen?.searchField.text ?? nil) { spells in
                 DispatchQueue.main.async {
                     if spells != nil {
+
                         let SpellInfosController = SpellInfosController()
                         self.show(SpellInfosController, sender: self)
                     } else {
@@ -43,6 +48,14 @@ class SpellSearchController: UIViewController {
             }
 
         }
+    }
+
+    func searchForSpell(_ search: UITextField){
+        guard let text = search.text, !text.isEmpty else {
+            return
+        }
+//        API.search().shared.search(with: text)
+        print(text)
     }
     
     func setupHideKeyboardOnTap() {

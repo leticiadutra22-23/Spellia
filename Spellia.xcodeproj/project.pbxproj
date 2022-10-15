@@ -14,8 +14,6 @@
 		D9B180C128F5A1EC0080A006 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9B180C028F5A1EC0080A006 /* Assets.xcassets */; };
 		D9B180C428F5A1EC0080A006 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9B180C228F5A1EC0080A006 /* LaunchScreen.storyboard */; };
 		D9B180CF28F5A1EC0080A006 /* SpelliaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B180CE28F5A1EC0080A006 /* SpelliaTests.swift */; };
-		D9B180D928F5A1EC0080A006 /* SpelliaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B180D828F5A1EC0080A006 /* SpelliaUITests.swift */; };
-		D9B180DB28F5A1EC0080A006 /* SpelliaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B180DA28F5A1EC0080A006 /* SpelliaUITestsLaunchTests.swift */; };
 		D9B180EC28F5A4810080A006 /* SpellSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B180EB28F5A4810080A006 /* SpellSearch.swift */; };
 		D9B180F328F5ADDB0080A006 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B180F228F5ADDB0080A006 /* API.swift */; };
 		D9B180F528F5AF080080A006 /* Spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B180F428F5AF080080A006 /* Spell.swift */; };
@@ -24,6 +22,8 @@
 		D9B180FC28F89C1A0080A006 /* SpellInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B180FB28F89C1A0080A006 /* SpellInfos.swift */; };
 		D9B180FE28F8A1400080A006 /* FavoritesSpells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B180FD28F8A1400080A006 /* FavoritesSpells.swift */; };
 		D9B1810028F8A1620080A006 /* FavoritesSpellsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B180FF28F8A1620080A006 /* FavoritesSpellsController.swift */; };
+		D9B1810B28FAFA930080A006 /* SpelliaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B180D828F5A1EC0080A006 /* SpelliaUITests.swift */; };
+		D9B1810C28FAFA970080A006 /* SpelliaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B180DA28F5A1EC0080A006 /* SpelliaUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,7 +101,6 @@
 				D9B180B328F5A1EB0080A006 /* Spellia */,
 				D9B180EA28F5A29C0080A006 /* Services */,
 				D9B180CD28F5A1EC0080A006 /* SpelliaTests */,
-				D9B180D728F5A1EC0080A006 /* SpelliaUITests */,
 				D9B180B228F5A1EB0080A006 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -133,17 +132,10 @@
 			isa = PBXGroup;
 			children = (
 				D9B180CE28F5A1EC0080A006 /* SpelliaTests.swift */,
-			);
-			path = SpelliaTests;
-			sourceTree = "<group>";
-		};
-		D9B180D728F5A1EC0080A006 /* SpelliaUITests */ = {
-			isa = PBXGroup;
-			children = (
 				D9B180D828F5A1EC0080A006 /* SpelliaUITests.swift */,
 				D9B180DA28F5A1EC0080A006 /* SpelliaUITestsLaunchTests.swift */,
 			);
-			path = SpelliaUITests;
+			path = SpelliaTests;
 			sourceTree = "<group>";
 		};
 		D9B180E728F5A2730080A006 /* Model */ = {
@@ -353,6 +345,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9B1810C28FAFA970080A006 /* SpelliaUITestsLaunchTests.swift in Sources */,
+				D9B1810B28FAFA930080A006 /* SpelliaUITests.swift in Sources */,
 				D9B180CF28F5A1EC0080A006 /* SpelliaTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,8 +355,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9B180D928F5A1EC0080A006 /* SpelliaUITests.swift in Sources */,
-				D9B180DB28F5A1EC0080A006 /* SpelliaUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
