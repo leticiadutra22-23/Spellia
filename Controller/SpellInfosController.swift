@@ -23,19 +23,21 @@ class SpellInfosController: UIViewController {
         view.backgroundColor = .white
         self.navigationItem.setHidesBackButton(true, animated: true)
         loadView()
-        screen?.spellView.text = "\(spellinfo?.name ?? "")"
+//        print(spellName)
 
-//        func config(_ spellsinf: Spell){
-//            SpellInfos().spellView.text = spellsinf.name
-//            SpellInfos().incantationView.text = spellsinf.incantation
-//            SpellInfos().lightView.text = spellsinf.light
-//            SpellInfos().typeView.text = spellsinf.type
-//            SpellInfos().effectView.text = spellsinf.effect
-//    //        SpellInfos().verbalView.text = spellsinf.canBeVerbal
-//
-//        }
+        self.screen?.searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
 
-//        self.screen?.searchButton.addTarget(self, action: #selector(SpellSearchController.self), for: .touchUpInside)
+        func config(_ spellsinf: Spell){
+            SpellInfos().spellView.text = spellsinf.name
+            SpellInfos().incantationView.text = spellsinf.incantation
+            SpellInfos().lightView.text = spellsinf.light
+            SpellInfos().typeView.text = spellsinf.type
+            SpellInfos().effectView.text = spellsinf.effect
+    //        SpellInfos().verbalView.text = spellsinf.canBeVerbal
+
+        }
+
+        self.screen?.searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
         
     }
 
@@ -45,24 +47,11 @@ class SpellInfosController: UIViewController {
         
     }
 
+    @objc func searchAction(){
+        SpellSearchController()
+    }
+    
     func spellSetup(spellName: Spell){
         SpellInfos().spellView.text = spellName.name
     }
-
-    public var spellName: String = "\(String(describing: SpellSearch().searchField.text))" {
-        didSet {
-            setupSpell()
-        }
-    }
-
-    func setupSpell(){
-        _ = NSMutableAttributedString (string: "\(spellName)")
-    }
-
-//    override init (style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-//        super.init (style: style, reuseIdentifier: reuseIdentifier)
-//    }
-//    required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-//    }
 }

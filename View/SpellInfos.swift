@@ -20,7 +20,7 @@ class SpellInfos: UIView {
     
     lazy var spellView: UILabel = {
         var spellView = UILabel()
-        spellView.text = "\(spellinfo?.name ?? "")"
+        spellView.text = "Feitiço"
         spellView.font = UIFont(name: "IM_FELL_Double_Pica_SC", size: 48)
         spellView.textColor = .white
         spellView.translatesAutoresizingMaskIntoConstraints = false

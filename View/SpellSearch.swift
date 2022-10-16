@@ -27,11 +27,9 @@ class SpellSearch: UIView {
         return label
     }()
     
-    lazy var searchField: UITextField = {
-        let field = UITextField()
-        
-        field.translatesAutoresizingMaskIntoConstraints = false
-        field.autocorrectionType = .no
+    lazy var searchField: UISearchTextField = {
+        let field = UISearchTextField()
+
         field.borderStyle = .none
         field.keyboardType = .default
         field.attributedPlaceholder = NSAttributedString(string: "Alohomora...", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.4)])
@@ -39,7 +37,7 @@ class SpellSearch: UIView {
         field.textAlignment = .center
         field.backgroundColor = UIColor.white.withAlphaComponent(0.4)
         field.textColor = .white
-        
+        field.frame = CGRect(x: 40, y: 400, width: 300, height: 60)
         field.layer.cornerRadius = 5
         return field
     }()
@@ -99,19 +97,13 @@ class SpellSearch: UIView {
             subImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             subImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             subImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            
+
             labelView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 200),
             labelView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            
-            searchField.topAnchor.constraint(equalTo: labelView.bottomAnchor, constant: 50),
-            searchField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            searchField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            searchField.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 20),
-            searchField.heightAnchor.constraint(equalToConstant: 50),
 
             returnView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 230),
             returnView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-        
+
             searchButton.topAnchor.constraint(equalTo: searchField.bottomAnchor, constant: 100),
             searchButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             searchButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),

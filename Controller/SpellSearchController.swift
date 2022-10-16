@@ -10,9 +10,10 @@
 import UIKit
 
 //CLASS SpellSearchController: create a navigation to SpellInfos
-class SpellSearchController: UIViewController {
+class SpellSearchController: UIViewController, UISearchTextFieldDelegate, UISearchBarDelegate {
     var spells = [Spell]()
     var screen: SpellSearch?
+    var infos = [SpellInfos]()
 //    var APISpells: () = API.getSpells(from: url)
  
     
@@ -26,36 +27,38 @@ class SpellSearchController: UIViewController {
         self.setupHideKeyboardOnTap()
         view.backgroundColor = .white
         loadView()
-        API.getSpells(from: url)
+
         self.navigationItem.setHidesBackButton(true, animated: true)
 
         self.screen?.searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
     }
-    
-    @objc func searchAction(){
-        if screen?.searchField.text != " " {
-            API.searchSpell(url: url, with: screen?.searchField.text ?? nil) { spells in
-                DispatchQueue.main.async {
-                    if spells != nil {
+    private let searchSpell = UISearchController(searchResultsController: nil)
 
+    private func createSearchBar(){
+        navigationItem.searchController = searchSpell
+        searchSpell.searchBar.delegate = self
+    }
+
+    @objc func searchAction(){
+        guard let text = screen?.searchField.text, !text.isEmpty else {
+            return
+        }
+        print(text)
+        let spellresponse: () = API.getSpells(query: text)
+        print(spellresponse)
+
+        //MARK: BREAKPOINT SÓ VAI ATÉ LINHA 51
+            API.searchSpell(with: text) { [weak self] spells in
+                DispatchQueue.main.async {
+                    if spellresponse != nil {
                         let SpellInfosController = SpellInfosController()
-                        self.show(SpellInfosController, sender: self)
+                        self?.show(SpellInfosController, sender: self)
                     } else {
-                        self.screen?.labelView.text = "Spell not found."
+                        self?.screen?.labelView.text = "Spell not found."
                     }
                 }
 
             }
-
-        }
-    }
-
-    func searchForSpell(_ search: UITextField){
-        guard let text = search.text, !text.isEmpty else {
-            return
-        }
-//        API.search().shared.search(with: text)
-        print(text)
     }
     
     func setupHideKeyboardOnTap() {
