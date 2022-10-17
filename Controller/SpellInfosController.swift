@@ -26,18 +26,6 @@ class SpellInfosController: UIViewController {
 //        print(spellName)
 
         self.screen?.searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
-
-        func config(_ spellsinf: Spell){
-            SpellInfos().spellView.text = spellsinf.name
-            SpellInfos().incantationView.text = spellsinf.incantation
-            SpellInfos().lightView.text = spellsinf.light
-            SpellInfos().typeView.text = spellsinf.type
-            SpellInfos().effectView.text = spellsinf.effect
-    //        SpellInfos().verbalView.text = spellsinf.canBeVerbal
-
-        }
-
-        self.screen?.searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
         
     }
 
@@ -50,8 +38,10 @@ class SpellInfosController: UIViewController {
     @objc func searchAction(){
         SpellSearchController()
     }
-    
-    func spellSetup(spellName: Spell){
-        SpellInfos().spellView.text = spellName.name
+
+    func showSpell() {
+        var cell = SpellInfos().spellView
+        let spell = spellinfo
+        cell.text = spellinfo?.name
     }
 }

@@ -9,7 +9,15 @@ import Foundation
 
 let url = "https://wizard-world-api.herokuapp.com/Spells"
 
+enum SpellError: Error {
+    case emptyString
+
+}
+
 public class API {
+
+    static let shared = API()
+    
     //GETSPELLS FUNC - GET SPELLS FROM API
     static func getSpells(query: String){
         let url = "https://wizard-world-api.herokuapp.com/Spells" + "?Name=" + query
@@ -37,10 +45,13 @@ public class API {
 
         
         guard !query.trimmingCharacters(in: .whitespaces).isEmpty else {
+            completion(.failure(SpellError.emptyString))
+            print ("something went wrong")
             return
         }
         let urlstring = url + "?Name=" + query
         guard URL(string: urlstring) != nil else {
+            print ("something went wrong")
             return
         }
         URLSession.shared.dataTask(with: URL(string: urlstring)!, completionHandler: { data, response, error in
@@ -49,15 +60,11 @@ public class API {
                 print ("something went wrong")
                 return
             }
-            var result: [Spell]?
             do {
-                result = try JSONDecoder().decode([Spell].self, from: data)
+                let result = try JSONDecoder().decode([Spell].self, from: data)
+                completion(.success(result))
             } catch {
                 print (String(describing: error))
-            }
-
-            guard result != nil else {
-                return
             }
         }).resume()
     }

@@ -32,7 +32,7 @@ class SpellSearch: UIView {
 
         field.borderStyle = .none
         field.keyboardType = .default
-        field.attributedPlaceholder = NSAttributedString(string: "Alohomora...", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.4)])
+        field.attributedPlaceholder = NSAttributedString(string: "Anteoculatia...", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.4)])
         field.font = UIFont(name: "IM_FELL_Double_Pica_SC", size: 24)
         field.textAlignment = .center
         field.backgroundColor = UIColor.white.withAlphaComponent(0.4)

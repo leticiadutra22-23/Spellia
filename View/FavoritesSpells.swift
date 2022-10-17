@@ -6,3 +6,56 @@
 //
 
 import Foundation
+import UIKit
+
+class FavoritesSpell : UIView {
+
+    lazy var subImageView: UIImageView = {
+        var imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "spellia-bg")
+        return imageView
+    }()
+
+    lazy var favsLabel: UILabel = {
+        var favs = UILabel()
+        favs.text = "Favorites"
+        favs.font = UIFont(name: "IM_FELL_Double_Pica_SC", size: 48)
+        favs.textColor = .white
+        favs.translatesAutoresizingMaskIntoConstraints = false
+        return favs
+    }()
+
+    var collectionView: UICollectionView {
+        let layout = UICollectionViewFlowLayout()
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        return cv
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubview(subImageView)
+        addSubview(favsLabel)
+        configConstraints()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func configConstraints() {
+            NSLayoutConstraint.activate([
+            subImageView.topAnchor.constraint(equalTo: self.topAnchor),
+            subImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            subImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            subImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+
+            favsLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10),
+            favsLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+
+            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            collectionView.leftAnchor.constraint(equalTo: leftAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            collectionView.rightAnchor.constraint(equalTo: rightAnchor),
+        ])
+    }
+}

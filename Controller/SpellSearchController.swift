@@ -13,6 +13,7 @@ import UIKit
 class SpellSearchController: UIViewController, UISearchTextFieldDelegate, UISearchBarDelegate {
     var spells = [Spell]()
     var screen: SpellSearch?
+    var spellinfo: Spell?
     var infos = [SpellInfos]()
 //    var APISpells: () = API.getSpells(from: url)
  
@@ -31,6 +32,7 @@ class SpellSearchController: UIViewController, UISearchTextFieldDelegate, UISear
         self.navigationItem.setHidesBackButton(true, animated: true)
 
         self.screen?.searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
+        self.screen?.favoritesButton.addTarget(self, action: #selector(FavViewAction), for: .touchUpInside)
     }
     private let searchSpell = UISearchController(searchResultsController: nil)
 
@@ -44,21 +46,29 @@ class SpellSearchController: UIViewController, UISearchTextFieldDelegate, UISear
             return
         }
         print(text)
-        let spellresponse: () = API.getSpells(query: text)
-        print(spellresponse)
+//        let spellresponse: () = API.getSpells(query: text)
+//        print(spellresponse)
 
         //MARK: BREAKPOINT SÓ VAI ATÉ LINHA 51
-            API.searchSpell(with: text) { [weak self] spells in
+            API.searchSpell(with: text) { result in
                 DispatchQueue.main.async {
-                    if spellresponse != nil {
+                    switch result {
+                    case .success(let spells):
+                        print(result)
                         let SpellInfosController = SpellInfosController()
-                        self?.show(SpellInfosController, sender: self)
-                    } else {
-                        self?.screen?.labelView.text = "Spell not found."
+                        self.show(SpellInfosController, sender: self)
+                    case .failure(let error):
+                        print(error)
+                        self.screen?.labelView.text = "Spell not found."
                     }
                 }
 
             }
+    }
+
+    @objc func FavViewAction(){
+        let favsView = FavoritesSpellsController()
+        present(favsView, animated: true, completion: nil)
     }
     
     func setupHideKeyboardOnTap() {
