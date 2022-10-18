@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D932DD5228FEDCF000ABB8C2 /* FavsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D932DD5128FEDCF000ABB8C2 /* FavsCell.swift */; };
+		D932DD5528FF31BD00ABB8C2 /* FavoriteItems+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D932DD5328FF31BD00ABB8C2 /* FavoriteItems+CoreDataClass.swift */; };
+		D932DD5628FF31BD00ABB8C2 /* FavoriteItems+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D932DD5428FF31BD00ABB8C2 /* FavoriteItems+CoreDataProperties.swift */; };
 		D9B180B528F5A1EB0080A006 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B180B428F5A1EB0080A006 /* AppDelegate.swift */; };
 		D9B180B728F5A1EB0080A006 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B180B628F5A1EB0080A006 /* SceneDelegate.swift */; };
 		D9B180B928F5A1EB0080A006 /* SpellSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B180B828F5A1EB0080A006 /* SpellSearchController.swift */; };
@@ -46,6 +48,8 @@
 
 /* Begin PBXFileReference section */
 		D932DD5128FEDCF000ABB8C2 /* FavsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavsCell.swift; sourceTree = "<group>"; };
+		D932DD5328FF31BD00ABB8C2 /* FavoriteItems+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteItems+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D932DD5428FF31BD00ABB8C2 /* FavoriteItems+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteItems+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D9B180B128F5A1EB0080A006 /* Spellia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spellia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9B180B428F5A1EB0080A006 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9B180B628F5A1EB0080A006 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +98,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D932DD5728FF31D200ABB8C2 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				D932DD5328FF31BD00ABB8C2 /* FavoriteItems+CoreDataClass.swift */,
+				D932DD5428FF31BD00ABB8C2 /* FavoriteItems+CoreDataProperties.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		D9B180A828F5A1EB0080A006 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +133,7 @@
 		D9B180B328F5A1EB0080A006 /* Spellia */ = {
 			isa = PBXGroup;
 			children = (
+				D932DD5728FF31D200ABB8C2 /* CoreData */,
 				D9B180B428F5A1EB0080A006 /* AppDelegate.swift */,
 				D9B180B628F5A1EB0080A006 /* SceneDelegate.swift */,
 				D9B180C028F5A1EC0080A006 /* Assets.xcassets */,
@@ -338,8 +352,10 @@
 				D9B180BF28F5A1EB0080A006 /* Spellia.xcdatamodeld in Sources */,
 				D9B180F328F5ADDB0080A006 /* API.swift in Sources */,
 				D9B180B728F5A1EB0080A006 /* SceneDelegate.swift in Sources */,
+				D932DD5628FF31BD00ABB8C2 /* FavoriteItems+CoreDataProperties.swift in Sources */,
 				D9B180FC28F89C1A0080A006 /* SpellInfos.swift in Sources */,
 				D9B180FE28F8A1400080A006 /* FavoritesSpells.swift in Sources */,
+				D932DD5528FF31BD00ABB8C2 /* FavoriteItems+CoreDataClass.swift in Sources */,
 				D9B1810028F8A1620080A006 /* FavoritesSpellsController.swift in Sources */,
 				D9B180F528F5AF080080A006 /* Spell.swift in Sources */,
 			);

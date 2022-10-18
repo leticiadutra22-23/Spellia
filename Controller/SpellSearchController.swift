@@ -46,23 +46,21 @@ class SpellSearchController: UIViewController, UISearchTextFieldDelegate, UISear
         }
         print(text)
 
-            API.searchSpell(with: text) { result in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let spells):
-//                        self.spells = spells.compactMap({
-//
-//                        })
-                        print(spells)
-                        let SpellInfosController = SpellInfosController()
-                            self.show(SpellInfosController, sender: self)
-                    case .failure(let error):
-                        print(error)
-                        self.screen?.labelView.text = "Spell not found."
-                    }
+        API.searchSpell(with: text) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let spells):
+                    self.spells = spells
+                    print(spells)
+                    let SpellInfosController = SpellInfosController(spellinfo: self.spells[0])
+                        self.show(SpellInfosController, sender: self)
+                case .failure(let error):
+                    print(error)
+                    self.screen?.labelView.text = "Spell not found."
                 }
-
             }
+        }
+
     }
 
     @objc func FavViewAction(){

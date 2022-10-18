@@ -68,7 +68,6 @@ class SpellInfos: UIView {
     
     lazy var verbalView: UILabel = {
         var verbalView = UILabel()
-        verbalView.text = "Can be verbal"
         verbalView.font = UIFont(name: "IM_FELL_Double_Pica_SC", size: 24)
         verbalView.textColor = UIColor(red: 177/255, green: 64/255, blue: 84/255, alpha: 1)
         verbalView.translatesAutoresizingMaskIntoConstraints = false
@@ -78,7 +77,7 @@ class SpellInfos: UIView {
     lazy var favoritesButton: UIButton = {
         let button = UIButton()
         let largeConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .large)
-        let largeBoldHeart = UIImage(systemName: "suit.heart", withConfiguration: largeConfig)
+        var largeBoldHeart = UIImage(systemName: "suit.heart", withConfiguration: largeConfig)
 
         button.layer.cornerRadius = 25
         button.backgroundColor = .white

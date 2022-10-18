@@ -31,18 +31,18 @@ class FavoritesSpell : UIView {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
         layout.scrollDirection = .vertical
+        cv.backgroundColor = .clear
         return cv
     }()
 
     lazy var searchButton: UIButton = {
         let button = UIButton()
         let largeConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .large)
-        let largeBoldHeart = UIImage(systemName: "plus", withConfiguration: largeConfig)
+        let largeBoldPlus = UIImage(systemName: "plus", withConfiguration: largeConfig)
         button.layer.cornerRadius = 30
         button.backgroundColor = .white
-        button.setImage(largeBoldHeart?.withTintColor(UIColor(red: 177/255, green: 64/255, blue: 84/255, alpha: 1), renderingMode: .alwaysOriginal), for: .normal)
-        button.frame = CGRect(x: 180, y: 700, width: 60, height: 60)
-
+        button.setImage(largeBoldPlus?.withTintColor(UIColor(red: 177/255, green: 64/255, blue: 84/255, alpha: 1), renderingMode: .alwaysOriginal), for: .normal)
+        button.frame = CGRect(x: 170, y: 700, width: 60, height: 60)
         return button
     }()
 
