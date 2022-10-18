@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D932DD5228FEDCF000ABB8C2 /* FavsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D932DD5128FEDCF000ABB8C2 /* FavsCell.swift */; };
 		D9B180B528F5A1EB0080A006 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B180B428F5A1EB0080A006 /* AppDelegate.swift */; };
 		D9B180B728F5A1EB0080A006 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B180B628F5A1EB0080A006 /* SceneDelegate.swift */; };
 		D9B180B928F5A1EB0080A006 /* SpellSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B180B828F5A1EB0080A006 /* SpellSearchController.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D932DD5128FEDCF000ABB8C2 /* FavsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavsCell.swift; sourceTree = "<group>"; };
 		D9B180B128F5A1EB0080A006 /* Spellia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spellia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9B180B428F5A1EB0080A006 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9B180B628F5A1EB0080A006 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				D9B180EB28F5A4810080A006 /* SpellSearch.swift */,
 				D9B180FB28F89C1A0080A006 /* SpellInfos.swift */,
 				D9B180FD28F8A1400080A006 /* FavoritesSpells.swift */,
+				D932DD5128FEDCF000ABB8C2 /* FavsCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9B180EC28F5A4810080A006 /* SpellSearch.swift in Sources */,
+				D932DD5228FEDCF000ABB8C2 /* FavsCell.swift in Sources */,
 				D9B180F728F844650080A006 /* SpellInfosController.swift in Sources */,
 				D9B180B928F5A1EB0080A006 /* SpellSearchController.swift in Sources */,
 				D9B180B528F5A1EB0080A006 /* AppDelegate.swift in Sources */,

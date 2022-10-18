@@ -23,7 +23,6 @@ class SpellInfosController: UIViewController {
         view.backgroundColor = .white
         self.navigationItem.setHidesBackButton(true, animated: true)
         loadView()
-//        print(spellName)
 
         self.screen?.searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
         
@@ -36,12 +35,7 @@ class SpellInfosController: UIViewController {
     }
 
     @objc func searchAction(){
-        SpellSearchController()
-    }
-
-    func showSpell() {
-        var cell = SpellInfos().spellView
-        let spell = spellinfo
-        cell.text = spellinfo?.name
+        let SpellSearchController = SpellSearchController()
+        self.show(SpellSearchController, sender: self)
     }
 }

@@ -15,7 +15,6 @@ class SpellSearchController: UIViewController, UISearchTextFieldDelegate, UISear
     var screen: SpellSearch?
     var spellinfo: Spell?
     var infos = [SpellInfos]()
-//    var APISpells: () = API.getSpells(from: url)
  
     
     override func loadView() {
@@ -46,17 +45,17 @@ class SpellSearchController: UIViewController, UISearchTextFieldDelegate, UISear
             return
         }
         print(text)
-//        let spellresponse: () = API.getSpells(query: text)
-//        print(spellresponse)
 
-        //MARK: BREAKPOINT SÓ VAI ATÉ LINHA 51
             API.searchSpell(with: text) { result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let spells):
-                        print(result)
+//                        self.spells = spells.compactMap({
+//
+//                        })
+                        print(spells)
                         let SpellInfosController = SpellInfosController()
-                        self.show(SpellInfosController, sender: self)
+                            self.show(SpellInfosController, sender: self)
                     case .failure(let error):
                         print(error)
                         self.screen?.labelView.text = "Spell not found."
@@ -67,8 +66,8 @@ class SpellSearchController: UIViewController, UISearchTextFieldDelegate, UISear
     }
 
     @objc func FavViewAction(){
-        let favsView = FavoritesSpellsController()
-        present(favsView, animated: true, completion: nil)
+        let FavoritesSpells = FavoritesSpellsController()
+        self.show(FavoritesSpells, sender: self)
     }
     
     func setupHideKeyboardOnTap() {
@@ -81,6 +80,7 @@ class SpellSearchController: UIViewController, UISearchTextFieldDelegate, UISear
         tap.cancelsTouchesInView = false
         return tap
     }
+
     
 }
 

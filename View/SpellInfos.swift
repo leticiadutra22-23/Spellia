@@ -95,7 +95,6 @@ class SpellInfos: UIView {
         button.titleLabel?.font = UIFont(name: "IM_FELL_Double_Pica_SC", size: 24)
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.cornerRadius = 8
-//        button.frame = CGRect(x: 800, y: 800, width: 30, height: 50)
         button.titleLabel?.textAlignment = .center
         button.backgroundColor = UIColor(red: 177/255, green: 64/255, blue: 84/255, alpha: 1)
 
