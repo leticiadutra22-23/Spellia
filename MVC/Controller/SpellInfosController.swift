@@ -8,11 +8,13 @@
 import Foundation
 import UIKit
 
-class SpellInfosController: UIViewController {
 
+//CLASS CONTROLLER FROM SpellInfos - SHOW SPELLS INFORMATIONS
+class SpellInfosController: UIViewController {
 
     var screen: SpellInfos?
     var spellinfo: Spell
+    var favspell: FavoritesSpellsController?
 
     init(spellinfo: Spell) {
         self.spellinfo = spellinfo
@@ -34,7 +36,7 @@ class SpellInfosController: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated: true)
         loadView()
 
-//        self.screen?.searchButton.addTarget(self, action: #selector(favAction), for: .touchUpInside)
+        self.screen?.favoritesButton.addTarget(self, action: #selector(favAction), for: .touchUpInside)
         self.screen?.searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
         
     }
@@ -53,13 +55,21 @@ class SpellInfosController: UIViewController {
         
     }
 
+    //BUTTON - ACTION: NAVIGATE TO PREVIEW SCREEN (SpellSearchController)
+
     @objc func searchAction(){
         let SpellSearchController = SpellSearchController()
         self.show(SpellSearchController, sender: self)
     }
 
+    //BUTTON - ACTION: ADD FAVORITE ITEM INTO FavoritesSpells COLLECTION VIEW
+
     @objc func favAction(){
         self.screen = SpellInfos()
-        self.screen?.favoritesButton.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
+        screen?.favoritesButton.setImage(UIImage(named: "suit.heart.fill"), for: .normal)
+        guard let field = screen?.favoritesButton, let text = screen?.spellView.text, let texttype = screen?.typeView.text, !text.isEmpty else {
+            return
+        }
+        favspell?.createItem(name: text, type: texttype)
     }
 }

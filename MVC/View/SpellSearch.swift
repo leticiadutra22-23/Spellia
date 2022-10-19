@@ -97,7 +97,7 @@ class SpellSearch: UIView {
             subImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             subImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
 
-            labelView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 200),
+            labelView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 230),
             labelView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 
             returnView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 230),

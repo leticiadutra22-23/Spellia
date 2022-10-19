@@ -31,7 +31,7 @@ class FavoritesSpell : UIView {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
         layout.scrollDirection = .vertical
-        cv.backgroundColor = .clear
+        cv.backgroundColor = .white
         return cv
     }()
 
@@ -49,8 +49,8 @@ class FavoritesSpell : UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(subImageView)
-        addSubview(collectionView)
         addSubview(favsLabel)
+        addSubview(collectionView)
         addSubview(searchButton)
         configConstraints()
     }
@@ -68,9 +68,9 @@ class FavoritesSpell : UIView {
             favsLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10),
             favsLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 
-            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            collectionView.topAnchor.constraint(equalTo: favsLabel.bottomAnchor),
             collectionView.leftAnchor.constraint(equalTo: leftAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: searchButton.topAnchor),
             collectionView.rightAnchor.constraint(equalTo: rightAnchor),
 
         ])

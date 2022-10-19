@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension FavoriteItems {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<FavoriteItems> {

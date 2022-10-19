@@ -38,9 +38,10 @@ public class API {
             guard result != nil else {
                 return
             }
-//            print(result ?? "null")
         }).resume()
     }
+
+    //FUNC SEARCHSPELL - SEARCH FOR USER INPUT (SPELL NAME) IN API
     static func searchSpell(with query: String, completion: @escaping (Result<[Spell], Error>) -> Void){
 
         
@@ -68,34 +69,4 @@ public class API {
             }
         }).resume()
     }
-
-
-//    static func searchSpell(url: String, with spellName: String?, completion: @escaping ([Spell]?) -> Void){
-//        guard !(spellName?.trimmingCharacters(in: .whitespaces).isEmpty ?? false) else {
-//                    return
-//                }
-//        let urlstring = url + (spellName ?? "")
-//                guard URL(string: urlstring) != nil else {
-//                    return
-//                }
-//        URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { data, response, error in
-//
-//            guard let data = data, error == nil else {
-//                print ("something went wrong")
-//                return
-//            }
-//            var findSpell: [Spell]?
-//            do {
-//                findSpell = try JSONDecoder().decode([Spell].self, from: data)
-//                completion(findSpell)
-//            } catch {
-//                print (String(describing: error))
-//            }
-//
-//            guard findSpell != nil else {
-//                return
-//            }
-//            print(findSpell ?? "null")
-//        }).resume()
-//    }
 }

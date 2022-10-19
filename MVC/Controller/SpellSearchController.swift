@@ -9,7 +9,7 @@
 // Separando View de ViewController https://swiftrocks.com/writing-cleaner-view-code-by-overriding-loadview
 import UIKit
 
-//CLASS SpellSearchController: create a navigation to SpellInfos
+//CLASS SpellSearchController: CREATE A NAVIGATION TO SpellInfosController TO DISPLAY THE RESPONSE FROM API (SEARCH)
 class SpellSearchController: UIViewController, UISearchTextFieldDelegate, UISearchBarDelegate {
     var spells = [Spell]()
     var screen: SpellSearch?
@@ -40,6 +40,8 @@ class SpellSearchController: UIViewController, UISearchTextFieldDelegate, UISear
         searchSpell.searchBar.delegate = self
     }
 
+    //BUTTON - ACTION: CONDITION TO NAVIGATE TO SpellInfosController
+
     @objc func searchAction(){
         guard let text = screen?.searchField.text, !text.isEmpty else {
             return
@@ -63,10 +65,14 @@ class SpellSearchController: UIViewController, UISearchTextFieldDelegate, UISear
 
     }
 
+    //BUTTON - ACTION: NAVIGATE TO FAVORITES ITEMS
+
     @objc func FavViewAction(){
         let FavoritesSpells = FavoritesSpellsController()
         self.show(FavoritesSpells, sender: self)
     }
+
+    //SCREEN CONFIGS TO SEARCH TEXT FIELD
     
     func setupHideKeyboardOnTap() {
             self.view.addGestureRecognizer(self.endEditingRecognizer())

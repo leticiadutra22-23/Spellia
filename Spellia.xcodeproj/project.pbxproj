@@ -107,14 +107,22 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		D9B180A828F5A1EB0080A006 = {
+		D932DD582900254900ABB8C2 /* MVC */ = {
 			isa = PBXGroup;
 			children = (
 				D9B180E728F5A2730080A006 /* Model */,
 				D9B180E828F5A2800080A006 /* View */,
 				D9B180E928F5A2860080A006 /* Controller */,
-				D9B180B328F5A1EB0080A006 /* Spellia */,
 				D9B180EA28F5A29C0080A006 /* Services */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		D9B180A828F5A1EB0080A006 = {
+			isa = PBXGroup;
+			children = (
+				D932DD582900254900ABB8C2 /* MVC */,
+				D9B180B328F5A1EB0080A006 /* Spellia */,
 				D9B180CD28F5A1EC0080A006 /* SpelliaTests */,
 				D9B180B228F5A1EB0080A006 /* Products */,
 			);
