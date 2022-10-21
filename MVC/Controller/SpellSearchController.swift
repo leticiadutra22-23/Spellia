@@ -15,8 +15,7 @@ class SpellSearchController: UIViewController, UISearchTextFieldDelegate, UISear
     var screen: SpellSearch?
     var spellinfo: Spell?
     var infos = [SpellInfos]()
- 
-    
+
     override func loadView() {
         self.screen = SpellSearch()
         self.view = self.screen
@@ -24,7 +23,7 @@ class SpellSearchController: UIViewController, UISearchTextFieldDelegate, UISear
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupHideKeyboardOnTap()
+        self.hideKeyboardWhenTappedAround()
         view.backgroundColor = .white
         loadView()
 
@@ -55,7 +54,7 @@ class SpellSearchController: UIViewController, UISearchTextFieldDelegate, UISear
                     self.spells = spells
                     print(spells)
                     let SpellInfosController = SpellInfosController(spellinfo: self.spells[0])
-                        self.show(SpellInfosController, sender: self)
+                    self.show(SpellInfosController, sender: self)
                 case .failure(let error):
                     print(error)
                     self.screen?.labelView.text = "Spell not found."
@@ -65,26 +64,25 @@ class SpellSearchController: UIViewController, UISearchTextFieldDelegate, UISear
 
     }
 
-    //BUTTON - ACTION: NAVIGATE TO FAVORITES ITEMS
+//BUTTON - ACTION: NAVIGATE TO FAVORITES ITEMS
 
     @objc func FavViewAction(){
         let FavoritesSpells = FavoritesSpellsController()
         self.show(FavoritesSpells, sender: self)
     }
-
-    //SCREEN CONFIGS TO SEARCH TEXT FIELD
-    
-    func setupHideKeyboardOnTap() {
-            self.view.addGestureRecognizer(self.endEditingRecognizer())
-            self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRecognizer())
-        }
-    
-    private func endEditingRecognizer() -> UIGestureRecognizer {
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing(_:)))
-        tap.cancelsTouchesInView = false
-        return tap
-    }
-
-    
 }
 
+//SCREEN CONFIGS TO SEARCH TEXT FIELD
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+
+}

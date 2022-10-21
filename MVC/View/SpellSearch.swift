@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-//CLASSE - SpellSearch: View configs and components
+//CLASSE - SpellSearch: VIEW CONFIGS AND COMPONENTS
 class SpellSearch: UIView {
     
     lazy var subImageView: UIImageView = {

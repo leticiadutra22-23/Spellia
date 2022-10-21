@@ -19,8 +19,7 @@ public class API {
     static let shared = API()
     
     //GETSPELLS FUNC - GET SPELLS FROM API
-    static func getSpells(query: String){
-        let url = "https://wizard-world-api.herokuapp.com/Spells" + "?Name=" + query
+    static func getSpells(){
 
         URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { data, response, error in
 

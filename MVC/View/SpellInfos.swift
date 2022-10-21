@@ -8,8 +8,10 @@
 import Foundation
 import UIKit
 
+//CLASS - SpellInfos: COMPONENTS THAT WILL SHOW ON SpellInfosController
 class SpellInfos: UIView {
     var spellinfo: Spell?
+    var bFav: Bool = true
 
     lazy var subImageView: UIImageView = {
         var imageView = UIImageView()
@@ -51,7 +53,7 @@ class SpellInfos: UIView {
         typeView.font = UIFont(name: "IM_FELL_Double_Pica_SC", size: 24)
         typeView.layer.cornerRadius = 15
         typeView.layer.frame = CGRect(x: 100, y: 100, width: 300, height: 300)
-        typeView.backgroundColor = UIColor(red: 177/255, green: 64/255, blue: 84/255, alpha: 1)
+        typeView.backgroundColor = UIColor(named: "Color")!
         typeView.textColor = .white
         typeView.translatesAutoresizingMaskIntoConstraints = false
         return typeView
@@ -69,19 +71,18 @@ class SpellInfos: UIView {
     lazy var verbalView: UILabel = {
         var verbalView = UILabel()
         verbalView.font = UIFont(name: "IM_FELL_Double_Pica_SC", size: 24)
-        verbalView.textColor = UIColor(red: 177/255, green: 64/255, blue: 84/255, alpha: 1)
+        verbalView.textColor = UIColor(named: "Color")!
         verbalView.translatesAutoresizingMaskIntoConstraints = false
         return verbalView
     }()
 
     lazy var favoritesButton: UIButton = {
-        let button = UIButton()
+        var button = UIButton()
         let largeConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .large)
-        var largeBoldHeart = UIImage(systemName: "suit.heart", withConfiguration: largeConfig)
-
+        let largeBoldHeart = UIImage(systemName: "suit.heart", withConfiguration: largeConfig)
+        button.setImage(largeBoldHeart?.withTintColor(UIColor(named: "Color")!, renderingMode: .alwaysOriginal), for: .normal)
         button.layer.cornerRadius = 25
         button.backgroundColor = .white
-        button.setImage(largeBoldHeart?.withTintColor(UIColor(red: 177/255, green: 64/255, blue: 84/255, alpha: 1), renderingMode: .alwaysOriginal), for: .normal)
         button.frame = CGRect(x: 165, y: 500, width: 50, height: 50)
 
         return button

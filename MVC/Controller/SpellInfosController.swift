@@ -15,6 +15,7 @@ class SpellInfosController: UIViewController {
     var screen: SpellInfos?
     var spellinfo: Spell
     var favspell: FavoritesSpellsController?
+    var bFav: Bool = true
 
     init(spellinfo: Spell) {
         self.spellinfo = spellinfo
@@ -36,6 +37,7 @@ class SpellInfosController: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated: true)
         loadView()
 
+//        self.screen?.favoritesButton.addTarget(self, action: #selector(buttonColor), for: .touchUpInside)
         self.screen?.favoritesButton.addTarget(self, action: #selector(favAction), for: .touchUpInside)
         self.screen?.searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
         
@@ -45,9 +47,9 @@ class SpellInfosController: UIViewController {
         self.screen = SpellInfos()
         self.screen?.spellView.text = spellinfo.name
         self.view = self.screen
-        self.screen?.incantationView.text = spellinfo.incantation
-        self.screen?.lightView.text = spellinfo.light
-        self.screen?.typeView.text = spellinfo.type
+        self.screen?.incantationView.text = "Incantation: " + (spellinfo.incantation ?? "")
+        self.screen?.lightView.text = "Light: " + (spellinfo.light ?? "")
+        self.screen?.typeView.text = "Type: " + spellinfo.type
         self.screen?.effectView.text = spellinfo.effect
         if spellinfo.canBeVerbal == true {
             self.screen?.verbalView.text = "Can be verbal"
@@ -55,19 +57,31 @@ class SpellInfosController: UIViewController {
         
     }
 
-    //BUTTON - ACTION: NAVIGATE TO PREVIEW SCREEN (SpellSearchController)
+//BUTTON - ACTION: NAVIGATE TO PREVIEW SCREEN (SpellSearchController)
 
     @objc func searchAction(){
         let SpellSearchController = SpellSearchController()
         self.show(SpellSearchController, sender: self)
     }
 
-    //BUTTON - ACTION: ADD FAVORITE ITEM INTO FavoritesSpells COLLECTION VIEW
+//FUNCTION - ACTION: MODIFY THE BUTTON IMAGE WHEN USER TAPS ON IT
+    @objc func buttonColor(){
+        bFav = !bFav
+        if bFav {
+            let largeConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .large)
+            let largeBoldHeart = UIImage(systemName: "suit.heart.fill", withConfiguration: largeConfig)
+            screen?.favoritesButton.setImage(largeBoldHeart?.withTintColor(UIColor(named: "Color")!, renderingMode: .alwaysOriginal), for: .normal)
+        } else {
+            let largeConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .large)
+            let largeBoldHeart = UIImage(systemName: "suit.heart", withConfiguration: largeConfig)
+            screen?.favoritesButton.setImage(largeBoldHeart?.withTintColor(UIColor(named: "Color")!, renderingMode: .alwaysOriginal), for: .normal)
+        }
+    }
 
+//BUTTON - ACTION: ADD FAVORITE ITEM INTO FavoritesSpells COLLECTION VIEW
     @objc func favAction(){
-        self.screen = SpellInfos()
-        screen?.favoritesButton.setImage(UIImage(named: "suit.heart.fill"), for: .normal)
-        guard let field = screen?.favoritesButton, let text = screen?.spellView.text, let texttype = screen?.typeView.text, !text.isEmpty else {
+        buttonColor()
+        guard let field = screen?.spellView, let text = field.text, let typefield = screen?.typeView, let texttype = typefield.text, !text.isEmpty else {
             return
         }
         favspell?.createItem(name: text, type: texttype)
