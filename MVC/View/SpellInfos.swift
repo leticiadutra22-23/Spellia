@@ -11,7 +11,6 @@ import UIKit
 //CLASS - SpellInfos: COMPONENTS THAT WILL SHOW ON SpellInfosController
 class SpellInfos: UIView {
     var spellinfo: Spell?
-    var bFav: Bool = true
 
     lazy var subImageView: UIImageView = {
         var imageView = UIImageView()

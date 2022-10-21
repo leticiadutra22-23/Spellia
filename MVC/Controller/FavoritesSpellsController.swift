@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 let cellID = "Cell"
 var model = [FavoriteItems]()
@@ -49,7 +50,7 @@ class FavoritesSpellsController: UICollectionViewController, UICollectionViewDel
 //COLLECTION VIEW - SHOW FAVORITES ITEMS
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.count
+        return FavsCollection().fetchedResultsController?.sections?[section].numberOfObjects ?? 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -76,6 +77,10 @@ class FavoritesSpellsController: UICollectionViewController, UICollectionViewDel
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+    }
+
+    func object(indexPath: IndexPath) -> FavoriteItems? {
+        return FavsCollection().fetchedResultsController?.object(at: indexPath)
     }
 
 //BUTTON ACTION TO ADD NEW FAVORITE SEARCHING FOR A SPELL
@@ -110,5 +115,42 @@ class FavoritesSpellsController: UICollectionViewController, UICollectionViewDel
             //error
         }
     }
+
+}
+
+protocol UpdateCollectionViewDelegate: NSObjectProtocol {
+    func reloadData(Sender: FavsCollection)
+}
+
+class FavsCollection: NSObject, NSFetchedResultsControllerDelegate {
+
+    let container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+
+    var fetchedResultsController: NSFetchedResultsController<FavoriteItems>?
+
+    weak var delegate: UpdateCollectionViewDelegate?
+
+    func retrieveDataFromCoreData(){
+
+        if let context = self.container?.viewContext {
+            let request: NSFetchRequest<FavoriteItems> = FavoriteItems.fetchRequest()
+
+            request.sortDescriptors = [NSSortDescriptor(key: #keyPath(FavoriteItems.name), ascending: false)]
+
+            self.fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        }
+        fetchedResultsController?.delegate = self
+
+        do {
+            try self.fetchedResultsController?.performFetch()
+        } catch {
+            print("Failed to initialize FetchedResultsController? \(error)")
+        }
+    }
+
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.delegate?.reloadData(Sender: self)
+    }
+
 
 }

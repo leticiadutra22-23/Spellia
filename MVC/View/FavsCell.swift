@@ -9,6 +9,7 @@ import UIKit
 
 //CLASS - FavsCell: CELL CONFIG THAT WILL APPEAR IN COLLECTION VIEW
 class FavsCell: UICollectionViewCell {
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,5 +41,6 @@ class FavsCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     
 }

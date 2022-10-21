@@ -15,6 +15,7 @@ class SpellInfosController: UIViewController {
     var screen: SpellInfos?
     var spellinfo: Spell
     var favspell: FavoritesSpellsController?
+    var search: SpellSearch?
     var bFav: Bool = true
 
     init(spellinfo: Spell) {
