@@ -7,7 +7,11 @@
 
 import Foundation
 
-let url = "https://wizard-world-api.herokuapp.com/Spells"
+// MARK: Gabi - Não deixar variaveis soltas no escopo global do App
+struct URLFactory {
+    static let url = "https://wizard-world-api.herokuapp.com/Spells"
+//    static let url: URL = URL(string: "https://wizard-world-api.herokuapp.com/Spells")!
+}
 
 enum SpellError: Error {
     case emptyString
@@ -16,12 +20,13 @@ enum SpellError: Error {
 
 public class API {
 
-    static let shared = API()
-    
+    static let shared = API() // MARK: Gabi - procurar o que é Singleton
+
+    // MARK: Gabi - Funções de get poderiam ser uma só, que recebe a url por parametro :)
     //GETSPELLS FUNC - GET SPELLS FROM API
     static func getSpells(){
 
-        URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { data, response, error in
+        URLSession.shared.dataTask(with: URL(string: URLFactory.url)!, completionHandler: { data, response, error in
 
             guard let data = data, error == nil else {
                 print ("something went wrong")
@@ -49,7 +54,7 @@ public class API {
             print ("something went wrong")
             return
         }
-        let urlstring = url + "?Name=" + query
+        let urlstring = URLFactory.url + "?Name=" + query
         guard URL(string: urlstring) != nil else {
             print ("something went wrong")
             return

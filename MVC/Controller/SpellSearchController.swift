@@ -19,11 +19,11 @@ class SpellSearchController: UIViewController, UISearchTextFieldDelegate, UISear
     override func loadView() {
         self.screen = SpellSearch()
         self.view = self.screen
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
         view.backgroundColor = .white
         loadView()
 

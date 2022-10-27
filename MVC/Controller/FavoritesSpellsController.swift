@@ -83,8 +83,7 @@ class FavoritesSpellsController: UICollectionViewController, UICollectionViewDel
         return FavsCollection().fetchedResultsController?.object(at: indexPath)
     }
 
-//BUTTON ACTION TO ADD NEW FAVORITE SEARCHING FOR A SPELL
-
+    /// BUTTON ACTION TO ADD NEW FAVORITE SEARCHING FOR A SPELL
     @objc func addAction(){
         let SpellSearchController = SpellSearchController()
         self.show(SpellSearchController, sender: self)
@@ -103,6 +102,11 @@ class FavoritesSpellsController: UICollectionViewController, UICollectionViewDel
         }
     }
 
+    // MARK: Gabi - pode criar comentarios que viram documentacao usando option + cmd + /
+    /// Creates FavoriteItems on CoreData
+    /// - Parameters:
+    ///   - name: name of the FavoriteItem to be created
+    ///   - type: type of the FavoriteItem to be created (Junx, Charm, and others)
     func createItem(name: String, type: String) {
         let newItem = FavoriteItems(context: context)
         newItem.name = name
